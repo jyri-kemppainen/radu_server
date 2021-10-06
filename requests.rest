@@ -1,0 +1,42 @@
+GET http://localhost:3001/api/places
+###
+GET http://localhost:3001/api/places/3
+###
+POST http://localhost:3001/api/places
+content-type:application/json
+
+{
+    "name":"new place",
+    "userId":1,
+    "lat":10.1234,
+    "lon":20.2345
+}
+
+###
+DELETE http://localhost:3001/api/places/127
+###
+PUT http://localhost:3001/api/places/128
+content-type:application/json
+
+{
+    "name":"modified",
+    "userId":1,
+    "lat":20.1234,
+    "lon":30.2345
+}
+
+###
+GET http://localhost:3001/api/users
+###
+GET http://localhost:3001/api/users/1
+### 
+POST http://localhost:3001/api/users
+content-type:application/json
+
+{
+    "name":"Me",
+    "password":"myPass"
+}
+
+###
+GET http://localhost:3001/api/places/nearby/62.5/29.2/50
