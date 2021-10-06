@@ -1,13 +1,16 @@
 const maria = require("mariadb/callback");
-/*
+
 const hostName="maria.westeurope.cloudapp.azure.com";
 const dbUser="testi";
 const dbPassword="mariadb1";
-*/
+const dbName = "testi1"
+
+/*
 const hostName = "localhost";
 const dbUser = "root";
 const dbPassword = "";
 const dbName = "placesapp";
+*/
 
 const sendQuery = (sql, onError, onSuccess, doCommit = false) => {
     const con = maria.createConnection({
