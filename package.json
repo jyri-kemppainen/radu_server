@@ -7,7 +7,7 @@
     "start": "node app.js",
     "dev": "nodemon app.js",
     "build": "cd client && npm install && npm run build",
-    "test": "jest"
+    "test": "jest --detectOpenHandles"
   },
   "author": "Radu",
   "license": "ISC",
