@@ -25,7 +25,6 @@ variables:
   DB_PASSWORD: 'mariadb1'
   DB_NAME: 'testi1'
   PUBLIC_URL: 'https://jkserver.azurewebsites.net'
-  CI: 'false'
 
 stages:
 - stage: Build
