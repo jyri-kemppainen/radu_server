@@ -24,7 +24,7 @@ variables:
   DB_USERNAME: 'testi'
   DB_PASSWORD: 'mariadb1'
   DB_NAME: 'testi1'
-  PUBLIC_URL: 'https://jkserver.scm.azurewebsites.net/'
+  PUBLIC_URL: 'https://jkserver/'
 
 stages:
 - stage: Build
