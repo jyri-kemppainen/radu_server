@@ -42,7 +42,9 @@ const App = () => {
         }
     }
 
-    useEffect(()=>getAllPlaces(),[rerender]);
+    useEffect(()=>getAllPlaces(),
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+        [rerender]);
     useEffect(doAutoLogin,[]);
 
     const listItemClick=(id)=>{
