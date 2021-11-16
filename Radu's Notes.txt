@@ -1,0 +1,6 @@
+Last changes:
+
+1. A bit of cleanup
+2. I added encryption of password in the user post request (forgot to do it in class).
+3. I added authentication for the place delete (no time to do it in class).
+4. I marked some functions that are not (and will probably not be used by our web app, because not enough time).

@@ -1,16 +1,9 @@
 const maria = require("mariadb/callback");
 
-const hostName="maria.westeurope.cloudapp.azure.com";
-const dbUser="testi";
-const dbPassword="mariadb1";
-const dbName = "testi1"
-
-/*
-const hostName = "localhost";
-const dbUser = "root";
-const dbPassword = "";
-const dbName = "placesapp";
-*/
+const hostName=process.env.DB_HOSTNAME;
+const dbUser=process.env.DB_USERNAME;
+const dbPassword=process.env.DB_PASSWORD;
+const dbName = process.env.DB_NAME;
 
 const sendQuery = (sql, onError, onSuccess, doCommit = false) => {
     const con = maria.createConnection({
@@ -65,6 +58,7 @@ const getPlace = (id, onError, onSuccess) => {
     );
 };
 
+// not used in web app
 //Get all places belonging to a user (given his / her ID)
 const getPlacesOfUser = (userId, onError, onSuccess) => {
     sendQuery(
@@ -115,21 +109,27 @@ const updatePlace = (id, { name, userId, lat, lon }, onError, onSuccess) => {
     );
 };
 
+// not used in web app
 const getAllUsers = (onError, onSuccess) => {
-    sendQuery(`SELECT * FROM users`, onError, onSuccess);
+    sendQuery(`SELECT * FROM Users`, onError, onSuccess);
 };
 
+// not used in web app
 const getUser = (id, onError, onSuccess) => {
-    sendQuery(`SELECT * FROM users WHERE ID=${id}`, onError, onSuccess);
+    sendQuery(`SELECT * FROM Users WHERE ID=${id}`, onError, onSuccess);
 };
 
 const addUser = ({ name, password }, onError, onSuccess) => {
     sendQuery(
-        `INSERT INTO users (Name, Password) VALUES ('${name}','${password}')`,
+        `INSERT INTO Users (Name, Password) VALUES ('${name}', '${password}')`,
         onError,
         onSuccess,
         true
     );
+};
+
+const getUserByName = (name, onError, onSuccess) => {
+    sendQuery(`SELECT * FROM Users WHERE Name='${name}'`, onError, onSuccess);
 };
 
 module.exports = {
@@ -141,5 +141,6 @@ module.exports = {
     updatePlace,
     getAllUsers,
     getUser,
-    addUser
+    addUser,
+    getUserByName,
 };

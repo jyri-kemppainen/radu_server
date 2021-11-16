@@ -1,0 +1,113 @@
+#loadingText{
+  position:absolute;
+  top:50%;
+  left:50%;
+  background: lightseagreen;
+  transform: translate(-50%,-50%);
+  padding: 10px;
+  border-radius: 10px;
+  font-family: Arial, Helvetica, sans-serif;
+  font-weight: bold;
+  color: rgb(17, 85, 81);
+  z-index: 10000;
+}   
+
+header{
+  background-color:lightseagreen;
+  padding: 10px;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: x-large;
+  font-weight: bold;
+  display:flex;
+  justify-content: space-between;
+}
+#title{
+  text-shadow: 0px 0px 5px cornsilk;
+  color:rgb(14, 70, 66);
+}
+#login{
+  color:white;
+  cursor:pointer;
+}
+
+body{
+  margin: 0px;
+}
+
+.userName{
+  font-weight: bold;
+}
+
+.coordinates{
+  font-family: 'Courier New', Courier, monospace;
+}
+
+.listItem{
+  font-family: Arial, Helvetica, sans-serif;
+  padding: 5px;
+  background-color: rgb(17, 85, 81);
+  margin: 5px;
+  border-radius: 5px;
+  color: white;
+  cursor: pointer;
+}
+
+#map{
+  width: 100%;
+  min-height: 300px;
+}
+
+#content{
+  display: flex;
+  flex-direction: column-reverse;
+}
+
+@media screen and (min-width:640px) {
+  #content{
+    flex-direction: row;
+  }
+  #map{
+    height:calc(100vh - 48px);
+  }
+  #placesResult{
+    height:calc(100vh - 48px);
+    overflow:auto;
+  }
+}
+
+.markerIcon{
+  background: rgb(17, 85, 81);
+  color:white;
+  width: 30px;
+  height: 30px;
+  transform:translate(-10px, -10px);
+  text-align:center;
+  border-radius:50%;
+  font-size: 20px;
+}
+
+.authWindow{
+  position:absolute;
+  top:50%;
+  left:50%;
+  z-index: 1000;
+  transform: translate(-50%,-50%);
+  background: rgb(17, 85, 81);
+  color:white;
+  padding: 10px;
+  border-radius: 10px;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+input{
+  width: calc(100% - 10px);
+}
+
+.addPlace{
+  background: green;
+  color:white;
+  padding: 10px;
+  border-radius: 10px;
+  font-family: Arial, Helvetica, sans-serif;
+  margin: 5px;
+}

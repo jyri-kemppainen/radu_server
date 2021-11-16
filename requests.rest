@@ -4,27 +4,29 @@ GET http://localhost:3001/api/places/3
 ###
 POST http://localhost:3001/api/places
 content-type:application/json
+Authorization: bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6IkFub3RoZXJNZSIsImlkIjozMiwiaWF0IjoxNjM0MjAwODA2fQ.iW506xQOHlreSgI_di1POo8ykXlelzCmJ9J3QAs4iBo
 
 {
-    "name":"new place",
-    "userId":1,
+    "name":"another_one",
+    "userId":32,
     "lat":10.1234,
     "lon":20.2345
 }
-
 ###
-DELETE http://localhost:3001/api/places/127
-###
-PUT http://localhost:3001/api/places/128
+DELETE http://localhost:3001/api/places/139
 content-type:application/json
+Authorization: bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6IkFub3RoZXJNZSIsImlkIjozMiwiaWF0IjoxNjM0MjAwODA2fQ.iW506xQOHlreSgI_di1POo8ykXlelzCmJ9J3QAs4iBo
+###
+PUT http://localhost:3001/api/places/143
+content-type:application/json
+Authorization: bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6IkFub3RoZXJNZSIsImlkIjozMiwiaWF0IjoxNjM0MjAwODA2fQ.iW506xQOHlreSgI_di1POo8ykXlelzCmJ9J3QAs4iBo
 
 {
-    "name":"modified",
-    "userId":1,
+    "name":"modified_auth",
+    "userId":32,
     "lat":20.1234,
     "lon":30.2345
 }
-
 ###
 GET http://localhost:3001/api/users
 ###
@@ -34,9 +36,16 @@ POST http://localhost:3001/api/users
 content-type:application/json
 
 {
-    "name":"Me",
-    "password":"myPass"
+    "name":"AnotherMe",
+    "password":"password"
 }
-
 ###
 GET http://localhost:3001/api/places/nearby/62.5/29.2/50
+### 
+POST http://localhost:3001/api/login
+content-type:application/json
+
+{
+    "name":"AnotherMe",
+    "password":"password"
+}

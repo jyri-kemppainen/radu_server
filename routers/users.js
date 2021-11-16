@@ -1,36 +1,42 @@
+//AnotherMe:password,Me:MyPass,Radu:password,Jyri:1234,Petri:p3tri
 const db = require("../db.js");
-const routerUser = require("express").Router();
+const bcrypt = require("bcrypt");
+const jwt = require("jsonwebtoken");
+const router = require("express").Router();
 
 const handleError = (err, response) => {
-    // this will need to support multiple status codes
-	response.status(404).json(err);
+    response.status(404).json(err);
 };
 
-routerUser.get("/", (request, response) => {
-	db.getAllUsers(
+// not used in web app
+router.get("/", (request, response) => {
+    db.getAllUsers(
         (err) => {
-			handleError(err, response);
-		},
-		(users) => {
-			response.json(users);
-		}
-	);
+            handleError(err, response);
+        },
+        (users) => {
+            response.json(users);
+        }
+    );
 });
 
-routerUser.get("/:id", (request, response) => {
-	const id = request.params.id;
-	db.getUser(
+// not used in web app
+router.get("/:id", (request, response) => {
+    const id = request.params.id;
+    db.getUser(
         id,
-		(err) => {
-			handleError(err, response);
-		},
-		(user) => {
+        (err) => {
+            handleError(err, response);
+        },
+        (user) => {
             response.json(user);
-		}
-	);
+        }
+    );
 });
 
-routerUser.post("/", (request, response) => {
+router.post("/", async (request, response) => {
+    request.body.password = await bcrypt.hash(request.body.password, 10);
+
     db.addUser(
         request.body,
         (err) => {
@@ -42,12 +48,21 @@ routerUser.post("/", (request, response) => {
                 (err) => {
                     handleError(err, response);
                 },
-                (user) => {
-                    response.json(user);
+                (resultArray) => {
+                    const token = jwt.sign(
+                        {
+                            username: resultArray[0]["Name"],
+                            id: resultArray[0]["ID"],
+                        },
+                        process.env.SECRET
+                    );
+                    delete resultArray[0]["Password"];
+                    resultArray[0]["Token"] = token;
+                    response.json(resultArray[0]);
                 }
             );
         }
     );
 });
 
-module.exports = routerUser;
+module.exports = router;
