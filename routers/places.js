@@ -4,7 +4,7 @@ require("dotenv").config();
 const router = require("express").Router();
 
 const handleError = (err, response) => {
-    response.status(404).json(err);
+   response.status(404).json(err);
 };
 
 const prcessToken = (request) => {
