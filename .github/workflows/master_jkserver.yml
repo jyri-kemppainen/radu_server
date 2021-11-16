@@ -13,11 +13,11 @@ jobs:
   build:
     runs-on: ubuntu-latest
     
-  DB_HOSTNAME: 'maria.westeurope.cloudapp.azure.com'
-  DB_USERNAME: 'testi'
-  DB_PASSWORD: 'mariadb1'
-  DB_NAME: 'testi1'
-  PUBLIC_URL: 'http://localhost'
+    DB_HOSTNAME: 'maria.westeurope.cloudapp.azure.com'
+    DB_USERNAME: 'testi'
+    DB_PASSWORD: 'mariadb1'
+    DB_NAME: 'testi1'
+    PUBLIC_URL: 'http://localhost'
 
     steps:
       - uses: actions/checkout@v2
